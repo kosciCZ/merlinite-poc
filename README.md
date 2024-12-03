@@ -1,4 +1,4 @@
-# Model Upload PoC
+# Model Upload PoC test
 
 This is a proof of concept of using [konflux](https://konflux-ci.dev) to upload [instructlab/merlinite-7b-lab-GGUF](https://huggingface.co/instructlab/merlinite-7b-lab-GGUF) to quay.
 

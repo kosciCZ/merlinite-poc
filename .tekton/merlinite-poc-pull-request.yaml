@@ -2,7 +2,7 @@ apiVersion: tekton.dev/v1
 kind: PipelineRun
 metadata:
   annotations:
-    build.appstudio.openshift.io/repo: https://github.com/ralphbean/merlinite-poc?rev={{revision}}
+    build.appstudio.openshift.io/repo: https://github.com/jakoscie/merlinite-poc?rev={{revision}}
     build.appstudio.redhat.com/commit_sha: '{{revision}}'
     build.appstudio.redhat.com/pull_request_number: '{{pull_request_number}}'
     build.appstudio.redhat.com/target_branch: '{{target_branch}}'
@@ -10,11 +10,11 @@ metadata:
     pipelinesascode.tekton.dev/on-cel-expression: event == "pull_request" && target_branch == "main"
   creationTimestamp: null
   labels:
-    appstudio.openshift.io/application: models
+    appstudio.openshift.io/application: oci-test
     appstudio.openshift.io/component: merlinite-poc
     pipelines.appstudio.openshift.io/type: build
   name: merlinite-poc-on-pull-request
-  namespace: rhel-ai-poc-tenant
+  namespace: jakoscie-tenant
 spec:
   params:
     - name: oci_copy_file
@@ -22,9 +22,9 @@ spec:
     - name: git-url
       value: '{{source_url}}'
     - name: image-expires-after
-      value: 5d
+      value: 1d
     - name: output-image
-      value: quay.io/redhat-user-workloads/rhel-ai-poc-tenant/models/merlinite-poc:on-pr-{{revision}}
+      value: quay.io/redhat-user-workloads/jakoscie-tenant/merlinite-poc:on-pr-{{revision}}
     - name: revision
       value: '{{revision}}'
   pipelineRef:
